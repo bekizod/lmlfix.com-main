@@ -22,6 +22,7 @@ import {
 import { BackgroundBeams } from "../ui/background-beams";
 import { GlareCard } from "../ui/glare-card";
 import { Button } from "../ui/button";
+import { SparklesCore } from "../ui/sparkles";
 
 export type LocationLandingProps = {
   location: string;
@@ -67,16 +68,6 @@ export default function LocationLanding({
         backgroundImage: `url(${bg.src})`,
       }}
     >
-
-       {/* <SparklesCore
-          id="tsparticlesfullpage"
-          background="transparent"
-          minSize={0.6}
-          maxSize={1.4}
-          particleDensity={100}
-          className="w-full h-full"
-          particleColor="#FFFFFF"
-        /> */}
       <div className="min-h-[90vh] gap-2.5 flex flex-col justify-center items-center px-5 sm:px-14 bg-black/55">
         <div className="text-4xl sm:text-5xl font-bold px-10 text-center">
           <TextGenerateEffect className="" words="Issues With Your" />{" "}
@@ -116,12 +107,20 @@ export default function LocationLanding({
             />
           </Link>
           <Link href={data.direction} target="blank">
-            
             <PrimaryButton
               title="Get Direction"
               icon={<Signpost aria-label="Get Directions" />}
             />
           </Link>
+        </div>
+        <div className="w-full h-60 mt-60 absolute">
+          {/* Gradients */}
+          <div className="absolute inset-x-20 top-0 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-[2px] w-3/4 blur-sm" />
+          <div className="absolute inset-x-20 top-0 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-px w-3/4" />
+          <div className="absolute inset-x-60 top-0 bg-gradient-to-r from-transparent via-sky-500 to-transparent h-[5px] w-1/4 blur-sm" />
+          <div className="absolute inset-x-60 top-0 bg-gradient-to-r from-transparent via-sky-500 to-transparent h-px w-1/4" />
+
+          {/* Core component */}
         </div>
       </div>
 
@@ -130,7 +129,7 @@ export default function LocationLanding({
       </div>
 
       <div className="flex justify-center items-center py-8  bg-white">
-        <div className="grid sm:grid-col-2 md:grid-cols-2  lg:grid-cols-3 gap-5">
+        <div className="grid sm:grid-col-2 md:grid-cols-2 scale-95  lg:grid-cols-3 gap-5">
           {repairType.map((item, index) => (
             <GlareCard
               className="flex flex-col   items-center justify-center"
@@ -162,84 +161,83 @@ export default function LocationLanding({
         </div>
       </div>
 
-      
+      <motion.div
+        className="bg-gray-50 gap-5 text-black grid grid-cols-1 sm:grid-cols-2 p-6  shadow-md"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        {/* Left Section */}
+        <motion.div
+          className="sm:border-r-4 border-gray-300 flex flex-col items-center p-4 space-y-6"
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          <p className="text-3xl font-extrabold  my-3 text-center">
+            {data.location}
+          </p>
+          <div className="space-y-6 text-gray-800 dark:text-gray-300 w-full">
+            <div className="flex flex-col items-start sm:items-start gap-1">
+              <p className="text-lg font-semibold">Business Hours:</p>
+              <p className="text-sm">8am - 7pm Everyday</p>
+            </div>
+            <div className="flex flex-col items-start sm:items-start gap-1">
+              <p className="text-lg font-semibold">Location:</p>
+              <p className="text-sm">{data.near}</p>
+            </div>
+            <div className="flex flex-col items-start sm:items-start gap-1">
+              <p className="text-lg font-semibold">Building:</p>
+              <p className="text-sm">{data.building}</p>
+            </div>
+            <div className="flex flex-col items-start sm:items-start gap-1">
+              <p className="text-lg font-semibold">Floor:</p>
+              <p className="text-sm">{data.floor}</p>
+            </div>
 
-<motion.div
-  className="bg-gray-50 gap-5 text-black grid grid-cols-1 sm:grid-cols-2 p-6 rounded-lg shadow-md"
-  initial={{ opacity: 0, y: 20 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.5 }}
->
-  {/* Left Section */}
-  <motion.div
-    className="sm:border-r-4 border-gray-300 flex flex-col items-center p-4 space-y-6"
-    initial={{ opacity: 0, x: -20 }}
-    animate={{ opacity: 1, x: 0 }}
-    transition={{ duration: 0.5, delay: 0.2 }}
-  >
-    <p className="text-3xl font-extrabold text-[var(--color-primary)] my-3 text-center sm:text-left">
-      {data.location}
-    </p>
-    <div className="space-y-6 text-gray-800 dark:text-gray-300 w-full">
-      <div className="flex flex-col items-start sm:items-start gap-1">
-        <p className="text-lg font-semibold">Business Hours:</p>
-        <p className="text-sm">8am - 7pm Everyday</p>
-      </div>
-      <div className="flex flex-col items-start sm:items-start gap-1">
-        <p className="text-lg font-semibold">Location:</p>
-        <p className="text-sm">{data.near}</p>
-      </div>
-      <div className="flex flex-col items-start sm:items-start gap-1">
-        <p className="text-lg font-semibold">Building:</p>
-        <p className="text-sm">{data.building}</p>
-      </div>
-      <div className="flex flex-col items-start sm:items-start gap-1">
-        <p className="text-lg font-semibold">Floor:</p>
-        <p className="text-sm">{data.floor}</p>
-      </div>
+            {/* Steps Section */}
+            <div className="mt-6 space-y-3">
+              <p className="text-lg font-semibold mb-2">Steps to Enter:</p>
+              <div className="space-y-2">
+                {data.steps.map((step, index) => (
+                  <motion.div
+                    key={index}
+                    className="flex items-start gap-2"
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.4, delay: 0.1 * index }}
+                  >
+                    <p className="font-semibold text-sm min-w-[4rem] text-center sm:text-left">
+                      Step {index + 1}:
+                    </p>
+                    <p className="text-sm truncate">{step}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </motion.div>
 
-      {/* Steps Section */}
-      <div className="mt-6 space-y-3">
-        <p className="text-lg font-semibold mb-2">Steps to Enter:</p>
-        <div className="space-y-2">
-          {data.steps.map((step, index) => (
-            <motion.div
-              key={index}
-              className="flex items-start gap-2"
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.4, delay: 0.1 * index }}
-            >
-              <p className="font-semibold text-sm min-w-[4rem] text-center sm:text-left">
-                Step {index + 1}:
-              </p>
-              <p className="text-sm truncate">{step}</p>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </div>
-  </motion.div>
-
-  {/* Right Section */}
-  <motion.div
-    className="flex flex-col items-center sm:items-start"
-    initial={{ opacity: 0, x: 20 }}
-    animate={{ opacity: 1, x: 0 }}
-    transition={{ duration: 0.5, delay: 0.2 }}
-  >
-    <p className="text-xl font-semibold mb-4 text-center sm:text-left">Our Location</p>
-    <div className="mt-3 w-full">
-      <iframe
-        src={data.position}
-        className="w-full h-80 sm:h-96 border-0 rounded-xl shadow-lg"
-        aria-hidden="false"
-        title="Shop Location"
-      ></iframe>
-    </div>
-  </motion.div>
-</motion.div>
-
+        {/* Right Section */}
+        <motion.div
+          className="flex flex-col items-center justify-center sm:items-start"
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          <div className="w-full text-3xl font-extrabold  text-center   flex justify-center">
+            Our Location
+          </div>
+          <div className="mt-3 w-full">
+            <iframe
+              src={data.position}
+              className="w-full h-80 sm:h-96 border-0 rounded-xl shadow-lg"
+              aria-hidden="false"
+              title="Shop Location"
+            ></iframe>
+          </div>
+        </motion.div>
+      </motion.div>
     </div>
   );
 }

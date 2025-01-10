@@ -4,7 +4,10 @@ import { motion } from 'framer-motion';
 
 export default function Loader() {
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+    <div className="flex items-center justify-center gap-4 min-h-screen bg-gray-100">
+      <div className="flex items-center justify-center h-screen">
+        <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-blue-500"></div>
+      </div>
       <motion.div
         className="flex flex-col items-center gap-4"
         initial={{ opacity: 0 }}
@@ -19,8 +22,8 @@ export default function Loader() {
           transition={{
             duration: 1.5,
             repeat: Infinity,
-            repeatType: 'loop',
-            ease: 'easeInOut',
+            repeatType: "loop",
+            ease: "easeInOut",
           }}
         >
           Loading...

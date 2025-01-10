@@ -108,9 +108,9 @@ const NavBar: React.FC = () => {
 
       {/* Mobile Navigation */}
       <div className='sm:hidden mx-2'>
-        <Button onClick={() => setOpenNavbar((pre) => !pre)}>
+        <div onClick={() => setOpenNavbar((pre) => !pre)}>
           <Menu />
-        </Button>
+        </div>
       </div>
 
       {openNavbar && (
